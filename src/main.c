@@ -4,7 +4,7 @@
 
 int main(void)
 {
-    InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "raylib [core] example - 3d camera free");
+    InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "TEST");
 
     Camera3D camera = { 0 };
     camera.position = (Vector3){ 10.0f, 10.0f, 10.0f }; // Camera position
@@ -14,6 +14,8 @@ int main(void)
     camera.projection = CAMERA_PERSPECTIVE;             // Camera projection type
 
     Vector3 cubePosition = { 0.0f, 0.0f, 0.0f };
+
+    Texture block=LoadTexture("res/block.png");
 
     DisableCursor();
 
@@ -29,14 +31,14 @@ int main(void)
 
             BeginMode3D(camera);
 
-                DrawCube(cubePosition, 2.0f, 2.0f, 2.0f, RED);
-                DrawCubeWires(cubePosition, 2.0f, 2.0f, 2.0f, MAROON);
-
+                draw_cube_texture(block,cubePosition,1.0f,1.0f,1.0f,WHITE);
+            
             EndMode3D();
 
         EndDrawing();
     }
 
+    UnloadTexture(block);
     CloseWindow();
 
     return 0;
