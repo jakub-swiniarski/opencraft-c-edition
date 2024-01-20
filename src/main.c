@@ -4,6 +4,9 @@
 
 int main(void)
 {
+    //TODO: think of an efficient way to store and draw the world
+    //3d array of block ids? get texture by id and draw cube with that texture
+    //iterate over the array and draw cube at (i,j,k)
     InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "OpenCraft");
 
     Camera3D camera = { 0 };
