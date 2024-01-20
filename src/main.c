@@ -1,4 +1,5 @@
-#include "raylib.h"
+#include <raylib.h>
+#include "functions.h"
 #include "config.h"
 
 int main(void)
