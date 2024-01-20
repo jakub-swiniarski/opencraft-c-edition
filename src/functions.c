@@ -1,6 +1,16 @@
 #include <raylib.h>
+#include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include <rlgl.h>
+#include "globals.h"
+
+char *path_to_file(char *name){
+    char *path=malloc(sizeof(char)*strlen(DIRECTORY)+strlen(name)+1);
+    sprintf(path,"%s%s",DIRECTORY,name);
+
+    return path;
+}
 
 void draw_cube_texture(Texture2D texture, Vector3 position, float width, float height, float length, Color color)
 {
