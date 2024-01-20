@@ -4,7 +4,7 @@
 
 int main(void)
 {
-    InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "TEST");
+    InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "OpenCraft");
 
     Camera3D camera = { 0 };
     camera.position = (Vector3){ 10.0f, 10.0f, 10.0f }; // Camera position
@@ -15,7 +15,7 @@ int main(void)
 
     Vector3 cubePosition = { 0.0f, 0.0f, 0.0f };
 
-    Texture block=LoadTexture("res/block.png");
+    Texture block=LoadTexture("res/stone.png");
 
     DisableCursor();
 
