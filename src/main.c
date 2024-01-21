@@ -38,10 +38,12 @@ int main(void)
 
             BeginMode3D(camera);
 
-                draw_cube_texture(block,(Vector3){.x=0.0f,.y=0.0f,.z=0.0f},1.0f,1.0f,1.0f,WHITE);
+                draw_block(block,(Vector3){.x=0.0f,.y=0.0f,.z=0.0f},1.0f,1.0f,1.0f);
             
             EndMode3D();
 
+            DrawFPS(10,10);
+            
         EndDrawing();
     }
 
