@@ -51,11 +51,17 @@ int main(void)
             ClearBackground((Color){.r=120,.g=255,.b=255,.a=255});
 
             BeginMode3D(camera);
-            //TODO: HOW TO AVOID DRAWING BLOCKS THAT ARE NOT VISIBLE?
+                //TODO: DO NOT DRAW INVISIBLE TEXTURE SIDES
                 for(int i=0; i<WORLD_WIDTH; i++){
                     for(int j=0; j<WORLD_HEIGHT; j++){
                         for(int k=0; k<WORLD_LENGTH; k++){
-                            if(world[i][j][k]==STONE)
+                            if(world[i][j][k]!=AIR &&
+                            ((i==0 || i==WORLD_WIDTH-1 ||
+                            j==0 || j==WORLD_HEIGHT-1 ||
+                            k==0 || k==WORLD_LENGTH-1) || 
+                            (world[i+1][j][k]==AIR || world[i-1][j][k]==AIR ||
+                            world[i][j+1][k]==AIR || world[i][j-1][k]==AIR ||
+                            world[i][j][k+1]==AIR || world[i][j][k-1]==AIR)))
                                 draw_block(block,i,j,k);
                         }
                     }
