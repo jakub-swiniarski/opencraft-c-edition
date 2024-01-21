@@ -9,14 +9,13 @@ int main(void)
     //iterate over the array and draw cube at (i,j,k)
     InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "OpenCraft");
 
-    Camera3D camera = { 0 };
-    camera.position = (Vector3){ 10.0f, 10.0f, 10.0f }; // Camera position
-    camera.target = (Vector3){ 0.0f, 0.0f, 0.0f };      // Camera looking at point
-    camera.up = (Vector3){ 0.0f, 1.0f, 0.0f };          // Camera up vector (rotation towards target)
-    camera.fovy = 45.0f;                                // Camera field-of-view Y
-    camera.projection = CAMERA_PERSPECTIVE;             // Camera projection type
-
-    Vector3 cubePosition = { 0.0f, 0.0f, 0.0f };
+    Camera3D camera={
+        .position=(Vector3){.x=5.0f,.y=5.0f,.z=5.0f},
+        .target=(Vector3){.x=0.0f,.y=0.0f,.z=0.0f},
+        .up=(Vector3){.x=0.0f,.y=1.0f,.z=0.0f},
+        .fovy=45.f,
+        .projection=CAMERA_PERSPECTIVE
+    };
 
     Texture block=LoadTexture("res/stone.png");
 
@@ -34,7 +33,7 @@ int main(void)
 
             BeginMode3D(camera);
 
-                draw_cube_texture(block,cubePosition,1.0f,1.0f,1.0f,WHITE);
+                draw_cube_texture(block,(Vector3){.x=0.0f,.y=0.0f,.z=0.0f},1.0f,1.0f,1.0f,WHITE);
             
             EndMode3D();
 
