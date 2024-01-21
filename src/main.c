@@ -5,6 +5,7 @@
 
 int main(void)
 {
+    //TODO: assign 0 or 1 (visible) to every block when generating, then update when u break blocks
     //TODO: DELTA TIME
     //TODO: think of an efficient way to store and draw the world
     //3d array of block ids? get texture by id and draw cube with that texture
@@ -20,10 +21,10 @@ int main(void)
     DisableCursor();
 
     Camera3D camera={
-        .position=(Vector3){.x=25.0f,.y=10.0f,.z=25.0f},
+        .position=(Vector3){.x=25.0f,.y=6.0f,.z=25.0f},
         .target=(Vector3){.x=0.0f,.y=0.0f,.z=0.0f},
         .up=(Vector3){.x=0.0f,.y=1.0f,.z=0.0f},
-        .fovy=45.f,
+        .fovy=70.f,
         .projection=CAMERA_PERSPECTIVE
     };
 
@@ -44,7 +45,7 @@ int main(void)
 
     while (!WindowShouldClose())
     {
-        UpdateCamera(&camera, CAMERA_FREE);
+        UpdateCamera(&camera, CAMERA_FIRST_PERSON);
 
         BeginDrawing();
 
