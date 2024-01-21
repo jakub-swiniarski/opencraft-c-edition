@@ -1,5 +1,6 @@
 #include <raylib.h>
 #include "functions.h"
+#include "globals.h"
 #include "config.h"
 
 int main(void)
@@ -19,12 +20,25 @@ int main(void)
     DisableCursor();
 
     Camera3D camera={
-        .position=(Vector3){.x=5.0f,.y=5.0f,.z=5.0f},
+        .position=(Vector3){.x=5.0f,.y=10.0f,.z=5.0f},
         .target=(Vector3){.x=0.0f,.y=0.0f,.z=0.0f},
         .up=(Vector3){.x=0.0f,.y=1.0f,.z=0.0f},
         .fovy=45.f,
         .projection=CAMERA_PERSPECTIVE
     };
+
+    //world generation
+    int world[WORLD_WIDTH][WORLD_HEIGHT][WORLD_LENGTH];
+    for(int i=0; i<WORLD_WIDTH; i++){
+        for(int j=0; j<WORLD_HEIGHT; j++){
+            for(int k=0; k<WORLD_LENGTH; k++){
+                if(j<WORLD_HEIGHT/2)
+                    world[i][j][k]=STONE;
+                else
+                    world[i][j][k]=AIR;
+            }
+        }
+    }
 
     Texture block=LoadTexture("res/stone.png");
 
@@ -37,8 +51,14 @@ int main(void)
             ClearBackground((Color){.r=120,.g=255,.b=255,.a=255});
 
             BeginMode3D(camera);
-
-                draw_block(block,1.0f,1.0f,1.0f);
+                for(int i=0; i<WORLD_WIDTH; i++){
+                    for(int j=0; j<WORLD_HEIGHT; j++){
+                        for(int k=0; k<WORLD_LENGTH; k++){
+                            if(world[i][j][k]==STONE)
+                                draw_block(block,i,j,k);
+                        }
+                    }
+                }
             
             EndMode3D();
 
