@@ -4,10 +4,19 @@
 
 int main(void)
 {
+    //TODO: DELTA TIME
     //TODO: think of an efficient way to store and draw the world
     //3d array of block ids? get texture by id and draw cube with that texture
     //iterate over the array and draw cube at (i,j,k)
     InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "OpenCraft");
+    
+    int display=GetCurrentMonitor();
+    SetWindowSize(GetMonitorWidth(display),GetMonitorHeight(display));
+    ToggleFullscreen();
+
+    SetTargetFPS(60);
+
+    DisableCursor();
 
     Camera3D camera={
         .position=(Vector3){.x=5.0f,.y=5.0f,.z=5.0f},
@@ -19,17 +28,13 @@ int main(void)
 
     Texture block=LoadTexture("res/stone.png");
 
-    DisableCursor();
-
-    SetTargetFPS(60);
-
     while (!WindowShouldClose())
     {
         UpdateCamera(&camera, CAMERA_FREE);
 
         BeginDrawing();
 
-            ClearBackground(RAYWHITE);
+            ClearBackground((Color){.r=120,.g=255,.b=255,.a=255});
 
             BeginMode3D(camera);
 
