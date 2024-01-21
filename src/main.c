@@ -1,7 +1,9 @@
 #include <raylib.h>
+#include <stdio.h>
 #include "functions.h"
 #include "globals.h"
 #include "config.h"
+#include "structs.h"
 
 int main(void)
 {
@@ -20,8 +22,15 @@ int main(void)
 
     DisableCursor();
 
+    //texture loading
+    for(int i=0; i<NUM_BLOCKS; i++){
+        char name[16];
+        sprintf(name,"block%d.png",i);
+        TextureHolder.blocks[i]=LoadTexture(path_to_file(name));
+    }
+
     Camera3D camera={
-        .position=(Vector3){.x=25.0f,.y=6.0f,.z=25.0f},
+        .position=(Vector3){.x=25.0f,.y=(int)(WORLD_HEIGHT/2)+2,.z=25.0f},
         .target=(Vector3){.x=0.0f,.y=0.0f,.z=0.0f},
         .up=(Vector3){.x=0.0f,.y=1.0f,.z=0.0f},
         .fovy=70.f,
@@ -33,15 +42,16 @@ int main(void)
     for(int i=0; i<WORLD_WIDTH; i++){
         for(int j=0; j<WORLD_HEIGHT; j++){
             for(int k=0; k<WORLD_LENGTH; k++){
-                if(j<WORLD_HEIGHT/2)
+                if(j<WORLD_HEIGHT/4)
                     world[i][j][k]=STONE;
+                else if(j<WORLD_HEIGHT/2)
+                    world[i][j][k]=DIRT;
                 else
                     world[i][j][k]=AIR;
             }
         }
     }
 
-    Texture block=LoadTexture("res/stone.png");
 
     while (!WindowShouldClose())
     {
@@ -63,7 +73,7 @@ int main(void)
                             (world[i+1][j][k]==AIR || world[i-1][j][k]==AIR ||
                             world[i][j+1][k]==AIR || world[i][j-1][k]==AIR ||
                             world[i][j][k+1]==AIR || world[i][j][k-1]==AIR)))
-                                draw_block(block,i,j,k);
+                                draw_block(TextureHolder.blocks[world[i][j][k]-1],i,j,k);
                         }
                     }
                 }
@@ -74,8 +84,11 @@ int main(void)
             
         EndDrawing();
     }
+    
+    for(int i=0; i<NUM_BLOCKS; i++){
+        UnloadTexture(TextureHolder.blocks[i]);
+    }
 
-    UnloadTexture(block);
     CloseWindow();
 
     return 0;
