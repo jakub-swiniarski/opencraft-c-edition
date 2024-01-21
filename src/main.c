@@ -30,7 +30,7 @@ int main(void)
     }
 
     Camera3D camera={
-        .position=(Vector3){.x=25.0f,.y=(int)(WORLD_HEIGHT/2)+2,.z=25.0f},
+        .position=(Vector3){.x=25.0f,.y=(int)(WORLD_HEIGHT/2)+3,.z=25.0f},
         .target=(Vector3){.x=0.0f,.y=0.0f,.z=0.0f},
         .up=(Vector3){.x=0.0f,.y=1.0f,.z=0.0f},
         .fovy=70.f,
@@ -46,6 +46,8 @@ int main(void)
                     world[i][j][k]=STONE;
                 else if(j<WORLD_HEIGHT/2)
                     world[i][j][k]=DIRT;
+                else if(j==WORLD_HEIGHT/2)
+                    world[i][j][k]=GRASS;
                 else
                     world[i][j][k]=AIR;
             }
