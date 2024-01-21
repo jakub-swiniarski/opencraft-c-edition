@@ -20,7 +20,7 @@ int main(void)
     DisableCursor();
 
     Camera3D camera={
-        .position=(Vector3){.x=5.0f,.y=10.0f,.z=5.0f},
+        .position=(Vector3){.x=25.0f,.y=10.0f,.z=25.0f},
         .target=(Vector3){.x=0.0f,.y=0.0f,.z=0.0f},
         .up=(Vector3){.x=0.0f,.y=1.0f,.z=0.0f},
         .fovy=45.f,
@@ -51,6 +51,7 @@ int main(void)
             ClearBackground((Color){.r=120,.g=255,.b=255,.a=255});
 
             BeginMode3D(camera);
+            //TODO: HOW TO AVOID DRAWING BLOCKS THAT ARE NOT VISIBLE?
                 for(int i=0; i<WORLD_WIDTH; i++){
                     for(int j=0; j<WORLD_HEIGHT; j++){
                         for(int k=0; k<WORLD_LENGTH; k++){
