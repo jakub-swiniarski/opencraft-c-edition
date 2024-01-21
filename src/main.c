@@ -38,7 +38,7 @@ int main(void)
 
             BeginMode3D(camera);
 
-                draw_block(block,(Vector3){.x=0.0f,.y=0.0f,.z=0.0f},1.0f,1.0f,1.0f);
+                draw_block(block,1.0f,1.0f,1.0f);
             
             EndMode3D();
 
