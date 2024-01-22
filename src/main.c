@@ -31,9 +31,9 @@ int main(void)
     }
 
     Player player={
-        .x=WORLD_WIDTH/2,
+        .x=(int)(WORLD_WIDTH/2),
         .y=WORLD_HEIGHT,
-        .z=WORLD_LENGTH/2,
+        .z=(int)(WORLD_LENGTH/2),
         .cam={
             .position=(Vector3){.x=25.0f,.y=WORLD_HEIGHT,.z=25.0f},
             .target=(Vector3){.x=0.0f,.y=0.0f,.z=0.0f},
@@ -63,7 +63,7 @@ int main(void)
     while (!WindowShouldClose())
     {
         dt=GetFrameTime();
-        UpdateCamera(&player.cam, CAMERA_CUSTOM); //TODO: WRITE YOUR OWN CONTROLS, CHECK IF THIS COMMAND IS STILL NEEDED
+        UpdateCamera(&player.cam, CAMERA_FREE); //TODO: WRITE YOUR OWN CONTROLS, CHECK IF THIS COMMAND IS STILL NEEDED
 
         //gravity
         if(world[(int)player.cam.position.x][(int)(player.cam.position.y-2)][(int)player.cam.position.z]==AIR)
@@ -78,14 +78,8 @@ int main(void)
                 for(int i=0; i<WORLD_WIDTH; i++){
                     for(int j=0; j<WORLD_HEIGHT; j++){
                         for(int k=0; k<WORLD_LENGTH; k++){
-                            if(world[i][j][k]!=AIR &&
-                            ((i==0 || i==WORLD_WIDTH-1 ||
-                            j==0 || j==WORLD_HEIGHT-1 ||
-                            k==0 || k==WORLD_LENGTH-1) || 
-                            (world[i+1][j][k]==AIR || world[i-1][j][k]==AIR ||
-                            world[i][j+1][k]==AIR || world[i][j-1][k]==AIR ||
-                            world[i][j][k+1]==AIR || world[i][j][k-1]==AIR)))
-                                draw_block(TextureHolder.blocks[world[i][j][k]-1],i,j,k);
+                            if(world[i][j][k]!=AIR)
+                                draw_block(&TextureHolder.blocks[world[i][j][k]-1],i,j,k);
                         }
                     }
                 }
