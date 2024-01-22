@@ -30,12 +30,17 @@ int main(void)
         TextureHolder.blocks[i]=LoadTexture(path_to_file(name));
     }
 
-    Camera3D camera={
-        .position=(Vector3){.x=25.0f,.y=WORLD_HEIGHT,.z=25.0f},
-        .target=(Vector3){.x=0.0f,.y=0.0f,.z=0.0f},
-        .up=(Vector3){.x=0.0f,.y=1.0f,.z=0.0f},
-        .fovy=70.f,
-        .projection=CAMERA_PERSPECTIVE
+    Player player={
+        .x=WORLD_WIDTH/2,
+        .y=WORLD_HEIGHT,
+        .z=WORLD_LENGTH/2,
+        .cam={
+            .position=(Vector3){.x=25.0f,.y=WORLD_HEIGHT,.z=25.0f},
+            .target=(Vector3){.x=0.0f,.y=0.0f,.z=0.0f},
+            .up=(Vector3){.x=0.0f,.y=1.0f,.z=0.0f},
+            .fovy=70.f,
+            .projection=CAMERA_PERSPECTIVE
+        }
     };
 
     //world generation
@@ -59,17 +64,17 @@ int main(void)
     while (!WindowShouldClose())
     {
         dt=GetFrameTime();
-        UpdateCamera(&camera, CAMERA_FIRST_PERSON); //TODO: WRITE YOUR OWN CONTROLS
+        UpdateCamera(&player.cam, CAMERA_CUSTOM); //TODO: WRITE YOUR OWN CONTROLS, CHECK IF THIS COMMAND IS STILL NEEDED
 
         //gravity
-        if(world[(int)camera.position.x][(int)(camera.position.y-2)][(int)camera.position.z]==AIR)
-            camera.position.y-=30*dt; //use speed_y
+        if(world[(int)player.cam.position.x][(int)(player.cam.position.y-2)][(int)player.cam.position.z]==AIR)
+            player.cam.position.y-=30*dt; //use speed_y
 
         BeginDrawing();
 
             ClearBackground((Color){.r=120,.g=255,.b=255,.a=255});
 
-            BeginMode3D(camera);
+            BeginMode3D(player.cam);
                 //TODO: DO NOT DRAW INVISIBLE TEXTURE SIDES
                 for(int i=0; i<WORLD_WIDTH; i++){
                     for(int j=0; j<WORLD_HEIGHT; j++){
