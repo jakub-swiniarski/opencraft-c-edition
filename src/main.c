@@ -44,7 +44,6 @@ int main(void)
     };
 
     //world generation
-    int world[WORLD_WIDTH][WORLD_HEIGHT][WORLD_LENGTH];
     for(int i=0; i<WORLD_WIDTH; i++){
         for(int j=0; j<WORLD_HEIGHT; j++){
             for(int k=0; k<WORLD_LENGTH; k++){
