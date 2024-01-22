@@ -146,7 +146,7 @@ void CameraMoveRight(Camera *cam, float distance)
 
 //------------------------------------------------------------------
 
-void update_camera(Camera *cam){
+void update_camera(Camera *cam){ //TODO: DELTA TIME ARGUMENT FOR MOVING AND LOOKING AROUND
     Vector2 mousePositionDelta = GetMouseDelta();
 
     CameraYaw(cam, -mousePositionDelta.x*MOUSE_SENS);
