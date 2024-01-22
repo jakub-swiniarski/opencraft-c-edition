@@ -8,7 +8,7 @@
 int main(void)
 {
     //TODO: assign 0 or 1 (visible) to every block when generating, then update when u break blocks
-    //TODO: DELTA TIME
+    //TODO: DELTA TIME CAMERA MOVEMENT
     //TODO: think of an efficient way to store and draw the world
     //3d array of block ids? get texture by id and draw cube with that texture
     //iterate over the array and draw cube at (i,j,k)
@@ -59,11 +59,11 @@ int main(void)
     while (!WindowShouldClose())
     {
         dt=GetFrameTime();
-        UpdateCamera(&camera, CAMERA_FIRST_PERSON);
+        UpdateCamera(&camera, CAMERA_FIRST_PERSON); //TODO: WRITE YOUR OWN CONTROLS
 
         //gravity
         if(world[(int)camera.position.x][(int)(camera.position.y-2)][(int)camera.position.z]==AIR)
-            camera.position.y-=40*dt; //use speed_y
+            camera.position.y-=30*dt; //use speed_y
 
         BeginDrawing();
 
