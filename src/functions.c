@@ -12,7 +12,7 @@ char *path_to_file(char *name){
     return path;
 }
 
-void draw_block(Texture *texture, int x, int y, int z)
+void draw_block(Texture *texture, int x, int y, int z, int a, int b, int c, int d, int e, int f)
 {
     rlSetTexture(texture->id);
 
@@ -20,7 +20,7 @@ void draw_block(Texture *texture, int x, int y, int z)
         rlColor4ub(255,255,255,255);
 
         //front
-        if(world[x][y][z+1]==AIR || z==WORLD_LENGTH-1){
+        if(a){
             rlNormal3f(0.0f, 0.0f, 1.0f);
             rlTexCoord2f(0.0f, 0.0f); rlVertex3f(x - 0.5f, y - 0.5f, z + 0.5f);
             rlTexCoord2f(1.0f, 0.0f); rlVertex3f(x + 0.5f, y - 0.5f, z + 0.5f);
@@ -29,7 +29,7 @@ void draw_block(Texture *texture, int x, int y, int z)
         }
 
         //back
-        if(world[x][y][z-1]==AIR || z==0){
+        if(b){
             rlNormal3f(0.0f, 0.0f, - 1.0f);
             rlTexCoord2f(1.0f, 0.0f); rlVertex3f(x - 0.5f, y - 0.5f, z - 0.5f);
             rlTexCoord2f(1.0f, 1.0f); rlVertex3f(x - 0.5f, y + 0.5f, z - 0.5f);
@@ -38,7 +38,7 @@ void draw_block(Texture *texture, int x, int y, int z)
         }
 
         //top
-        if(world[x][y+1][z]==AIR || y==WORLD_HEIGHT-1){
+        if(c){
             rlNormal3f(0.0f, 1.0f, 0.0f);
             rlTexCoord2f(0.0f, 1.0f); rlVertex3f(x - 0.5f, y + 0.5f, z - 0.5f);
             rlTexCoord2f(0.0f, 0.0f); rlVertex3f(x - 0.5f, y + 0.5f, z + 0.5f);
@@ -47,7 +47,7 @@ void draw_block(Texture *texture, int x, int y, int z)
         }
 
         //bottom
-        if(world[x][y-1][z]==AIR || y==0){
+        if(d){
             rlNormal3f(0.0f, - 1.0f, 0.0f);
             rlTexCoord2f(1.0f, 1.0f); rlVertex3f(x - 0.5f, y - 0.5f, z - 0.5f);
             rlTexCoord2f(0.0f, 1.0f); rlVertex3f(x + 0.5f, y - 0.5f, z - 0.5f);
@@ -56,7 +56,7 @@ void draw_block(Texture *texture, int x, int y, int z)
         }
 
         //right
-        if(world[x+1][y][z]==AIR || x==WORLD_WIDTH-1){
+        if(e){
             rlNormal3f(1.0f, 0.0f, 0.0f);
             rlTexCoord2f(1.0f, 0.0f); rlVertex3f(x + 0.5f, y - 0.5f, z - 0.5f);
             rlTexCoord2f(1.0f, 1.0f); rlVertex3f(x + 0.5f, y + 0.5f, z - 0.5f);
@@ -65,7 +65,7 @@ void draw_block(Texture *texture, int x, int y, int z)
         }
 
         //left
-        if(world[x-1][y][z]==AIR || x==0){
+        if(f){
             rlNormal3f( - 1.0f, 0.0f, 0.0f);
             rlTexCoord2f(0.0f, 0.0f); rlVertex3f(x - 0.5f, y - 0.5f, z - 0.5f);
             rlTexCoord2f(1.0f, 0.0f); rlVertex3f(x - 0.5f, y - 0.5f, z + 0.5f);
