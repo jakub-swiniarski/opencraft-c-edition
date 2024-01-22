@@ -64,7 +64,7 @@ int main(void)
     while (!WindowShouldClose())
     {
         dt=GetFrameTime();
-        update_camera(&player.cam);
+        update_camera(&player.cam,dt);
 
         //gravity
         if(world[(int)player.cam.position.x][(int)(player.cam.position.y-2)][(int)player.cam.position.z]==AIR)

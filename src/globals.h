@@ -9,7 +9,7 @@ static const int WORLD_LENGTH=50;
 enum {AIR,STONE,DIRT,GRASS};
 
 //movement
-static const float MOVE_SPEED=0.1f;
+static const int MOVE_SPEED=5;
 
 static const char *DIRECTORY="res/";
 static const char *VERSION="1.0.0";
