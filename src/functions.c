@@ -82,27 +82,17 @@ void draw_block(Texture *texture, int x, int y, int z, int *sides)
 
 //------------------------------------------------------------------
 
-Vector3 GetCameraForward(Camera *cam)
-{
-    return Vector3Normalize(Vector3Subtract(cam->target, cam->position));
-}
-
-Vector3 GetCameraUp(Camera *cam)
-{
-    return Vector3Normalize(cam->up);
-}
-
 Vector3 GetCameraRight(Camera *cam)
 {
-    Vector3 forward = GetCameraForward(cam);
-    Vector3 up = GetCameraUp(cam);
+    Vector3 forward = Vector3Normalize(Vector3Subtract(cam->target, cam->position));
+    Vector3 up = Vector3Normalize(cam->up);
 
     return Vector3CrossProduct(forward, up);
 }
 
 void CameraYaw(Camera *cam, float angle)
 {
-    Vector3 up = GetCameraUp(cam);
+    Vector3 up = Vector3Normalize(cam->up);
     Vector3 targetPosition = Vector3Subtract(cam->target, cam->position);
     targetPosition = Vector3RotateByAxisAngle(targetPosition, up, angle);
     cam->target = Vector3Add(cam->position, targetPosition);
@@ -110,7 +100,7 @@ void CameraYaw(Camera *cam, float angle)
 
 void CameraPitch(Camera *cam, float angle)
 {
-    Vector3 up = GetCameraUp(cam);
+    Vector3 up = Vector3Normalize(cam->up); 
     Vector3 targetPosition = Vector3Subtract(cam->target, cam->position);
     float maxAngleUp = Vector3Angle(up, targetPosition);
     maxAngleUp -= 0.001f;
@@ -126,7 +116,7 @@ void CameraPitch(Camera *cam, float angle)
 
 void CameraMoveForward(Camera *cam, float distance)
 {
-    Vector3 forward = GetCameraForward(cam);
+    Vector3 forward = Vector3Normalize(Vector3Subtract(cam->target, cam->position));
     forward.y = 0;
     forward = Vector3Normalize(forward);
     forward = Vector3Scale(forward, distance);
