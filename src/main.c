@@ -64,7 +64,7 @@ int main(void)
     while (!WindowShouldClose())
     {
         dt=GetFrameTime();
-        UpdateCamera(&player.cam, CAMERA_FREE); //TODO: WRITE YOUR OWN CONTROLS, CHECK IF THIS COMMAND IS STILL NEEDED
+        UpdateCamera(&player.cam, CAMERA_FIRST_PERSON); //TODO: WRITE YOUR OWN CONTROLS, CHECK IF THIS COMMAND IS STILL NEEDED
 
         //gravity
         if(world[(int)player.cam.position.x][(int)(player.cam.position.y-2)][(int)player.cam.position.z]==AIR)
@@ -75,7 +75,6 @@ int main(void)
             ClearBackground((Color){.r=120,.g=255,.b=255,.a=255});
 
             BeginMode3D(player.cam);
-                //TODO: DO NOT DRAW INVISIBLE TEXTURE SIDES
                 for(int i=0; i<WORLD_WIDTH; i++){
                     for(int j=0; j<WORLD_HEIGHT; j++){
                         for(int k=0; k<WORLD_LENGTH; k++){
