@@ -19,6 +19,7 @@ int main(void)
     ToggleFullscreen();
 
     SetTargetFPS(60);
+    float dt=1.0f;
 
     DisableCursor();
 
@@ -30,7 +31,7 @@ int main(void)
     }
 
     Camera3D camera={
-        .position=(Vector3){.x=25.0f,.y=(int)(WORLD_HEIGHT/2)+3,.z=25.0f},
+        .position=(Vector3){.x=25.0f,.y=WORLD_HEIGHT,.z=25.0f},
         .target=(Vector3){.x=0.0f,.y=0.0f,.z=0.0f},
         .up=(Vector3){.x=0.0f,.y=1.0f,.z=0.0f},
         .fovy=70.f,
@@ -57,7 +58,12 @@ int main(void)
 
     while (!WindowShouldClose())
     {
+        dt=GetFrameTime();
         UpdateCamera(&camera, CAMERA_FIRST_PERSON);
+
+        //gravity
+        if(world[(int)camera.position.x][(int)(camera.position.y-2)][(int)camera.position.z]==AIR)
+            camera.position.y-=40*dt; //use speed_y
 
         BeginDrawing();
 
