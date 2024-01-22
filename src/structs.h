@@ -9,8 +9,7 @@ static struct{
 } TextureHolder;
 
 typedef struct{
-    float x,y,z;
-    int speed_y;
+    float speed_y;
     Camera3D cam;
 } Player;
 

@@ -31,9 +31,7 @@ int main(void)
     }
 
     Player player={
-        .x=(int)(WORLD_WIDTH/2),
-        .y=WORLD_HEIGHT,
-        .z=(int)(WORLD_LENGTH/2),
+        .speed_y=0.f,
         .cam={
             .position=(Vector3){.x=25.0f,.y=WORLD_HEIGHT,.z=25.0f},
             .target=(Vector3){.x=0.0f,.y=0.0f,.z=0.0f},
