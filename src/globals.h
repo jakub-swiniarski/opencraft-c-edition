@@ -2,9 +2,11 @@
 #define GLOBALS_H
 
 //world
-static const int WORLD_WIDTH=50;
-static const int WORLD_HEIGHT=50;
-static const int WORLD_LENGTH=50;
+#define WORLD_WIDTH 500
+#define WORLD_HEIGHT 50
+#define WORLD_LENGTH 500
+static int world[WORLD_WIDTH][WORLD_HEIGHT][WORLD_LENGTH];
+static const int RENDER_DIST=10;
 #define NUM_BLOCKS 3
 enum {AIR,STONE,DIRT,GRASS};
 

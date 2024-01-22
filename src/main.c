@@ -18,7 +18,7 @@ int main(void)
     SetWindowSize(GetMonitorWidth(display),GetMonitorHeight(display));
     ToggleFullscreen();
 
-    SetTargetFPS(FPS);
+    SetTargetFPS(FPS+1000);
     float dt=1.0f;
 
     DisableCursor();
@@ -42,7 +42,6 @@ int main(void)
     };
 
     //world generation
-    int world[WORLD_WIDTH][WORLD_HEIGHT][WORLD_LENGTH];
     for(int i=0; i<WORLD_WIDTH; i++){
         for(int j=0; j<WORLD_HEIGHT; j++){
             for(int k=0; k<WORLD_LENGTH; k++){
@@ -73,9 +72,9 @@ int main(void)
             ClearBackground((Color){.r=120,.g=255,.b=255,.a=255});
 
             BeginMode3D(player.cam);
-                for(int i=0; i<WORLD_WIDTH; i++){
+                for(int i=player.cam.position.x-RENDER_DIST; i<player.cam.position.x+RENDER_DIST; i++){
                     for(int j=0; j<WORLD_HEIGHT; j++){
-                        for(int k=0; k<WORLD_LENGTH; k++){
+                        for(int k=player.cam.position.z-RENDER_DIST; k<player.cam.position.z+RENDER_DIST; k++){
                             if(world[i][j][k]!=AIR){
                                 int sides[6];
                                 sides[0]=(k==WORLD_LENGTH-1 || world[i][j][k+1]==AIR)?1:0;
