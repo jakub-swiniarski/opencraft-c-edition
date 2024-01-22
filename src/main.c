@@ -18,7 +18,7 @@ int main(void)
     SetWindowSize(GetMonitorWidth(display),GetMonitorHeight(display));
     ToggleFullscreen();
 
-    SetTargetFPS(60);
+    SetTargetFPS(FPS);
     float dt=1.0f;
 
     DisableCursor();

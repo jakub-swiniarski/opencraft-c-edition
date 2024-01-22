@@ -149,8 +149,8 @@ void CameraMoveRight(Camera *cam, float distance)
 void update_camera(Camera *cam, float dt){
     Vector2 mousePositionDelta = GetMouseDelta();
 
-    CameraYaw(cam, -mousePositionDelta.x*MOUSE_SENS*dt);
-    CameraPitch(cam, -mousePositionDelta.y*MOUSE_SENS*dt);
+    CameraYaw(cam, -mousePositionDelta.x*MOUSE_SENS);
+    CameraPitch(cam, -mousePositionDelta.y*MOUSE_SENS);
 
     if (IsKeyDown(KEY_W)) CameraMoveForward(cam, MOVE_SPEED*dt);
     if (IsKeyDown(KEY_A)) CameraMoveRight(cam, -MOVE_SPEED*dt);
