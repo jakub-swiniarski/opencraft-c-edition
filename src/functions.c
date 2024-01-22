@@ -80,13 +80,12 @@ void draw_block(Texture *texture, int x, int y, int z, int *sides)
     rlSetTexture(0);
 }
 
-
+//------------------------------------------------------------------
 
 Vector3 GetCameraForward(Camera *cam)
 {
     return Vector3Normalize(Vector3Subtract(cam->target, cam->position));
 }
-
 
 Vector3 GetCameraUp(Camera *cam)
 {
@@ -109,7 +108,7 @@ void CameraYaw(Camera *cam, float angle)
     cam->target = Vector3Add(cam->position, targetPosition);
 }
 
-void CameraPitch(Camera *cam, float angle, bool rotateUp)
+void CameraPitch(Camera *cam, float angle)
 {
     Vector3 up = GetCameraUp(cam);
     Vector3 targetPosition = Vector3Subtract(cam->target, cam->position);
@@ -123,44 +122,38 @@ void CameraPitch(Camera *cam, float angle, bool rotateUp)
     Vector3 right = GetCameraRight(cam);
     targetPosition = Vector3RotateByAxisAngle(targetPosition, right, angle);
     cam->target = Vector3Add(cam->position, targetPosition);
-    if (rotateUp)
-        cam->up = Vector3RotateByAxisAngle(cam->up, right, angle);
 }
 
-void CameraMoveForward(Camera *cam, float distance, bool moveInWorldPlane)
+void CameraMoveForward(Camera *cam, float distance)
 {
     Vector3 forward = GetCameraForward(cam);
-    if (moveInWorldPlane)
-    {
-        forward.y = 0;
-        forward = Vector3Normalize(forward);
-    }
+    forward.y = 0;
+    forward = Vector3Normalize(forward);
     forward = Vector3Scale(forward, distance);
     cam->position = Vector3Add(cam->position, forward);
     cam->target = Vector3Add(cam->target, forward);
 }
 
-void CameraMoveRight(Camera *cam, float distance, bool moveInWorldPlane)
+void CameraMoveRight(Camera *cam, float distance)
 {
     Vector3 right = GetCameraRight(cam);
-    if (moveInWorldPlane)
-    {
-        right.y = 0;
-        right = Vector3Normalize(right);
-    }
+    right.y = 0;
+    right = Vector3Normalize(right);
     right = Vector3Scale(right, distance);
     cam->position = Vector3Add(cam->position, right);
     cam->target = Vector3Add(cam->target, right);
 }
 
+//------------------------------------------------------------------
+
 void update_camera(Camera *cam){
     Vector2 mousePositionDelta = GetMouseDelta();
 
     CameraYaw(cam, -mousePositionDelta.x*MOUSE_SENS);
-    CameraPitch(cam, -mousePositionDelta.y*MOUSE_SENS, 0);
+    CameraPitch(cam, -mousePositionDelta.y*MOUSE_SENS);
 
-    if (IsKeyDown(KEY_W)) CameraMoveForward(cam, MOVE_SPEED, 1);
-    if (IsKeyDown(KEY_A)) CameraMoveRight(cam, -MOVE_SPEED, 1);
-    if (IsKeyDown(KEY_S)) CameraMoveForward(cam, -MOVE_SPEED, 1);
-    if (IsKeyDown(KEY_D)) CameraMoveRight(cam, MOVE_SPEED, 1);
+    if (IsKeyDown(KEY_W)) CameraMoveForward(cam, MOVE_SPEED);
+    if (IsKeyDown(KEY_A)) CameraMoveRight(cam, -MOVE_SPEED);
+    if (IsKeyDown(KEY_S)) CameraMoveForward(cam, -MOVE_SPEED);
+    if (IsKeyDown(KEY_D)) CameraMoveRight(cam, MOVE_SPEED);
 }
