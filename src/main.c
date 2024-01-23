@@ -8,7 +8,6 @@
 int main(void)
 {
     //TODO: assign 0 or 1 (visible) to every block when generating, then update when u break blocks
-    //TODO: DELTA TIME CAMERA MOVEMENT
     //TODO: think of an efficient way to store and draw the world
     //3d array of block ids? get texture by id and draw cube with that texture
     //iterate over the array and draw cube at (i,j,k)
