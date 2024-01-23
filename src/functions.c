@@ -159,7 +159,7 @@ void begin_3d(Player *p)
 
     float aspect=(float)SCREEN_WIDTH/(float)SCREEN_HEIGHT;
 
-    double top=RL_CULL_DISTANCE_NEAR*tan(p->fovy*0.5*DEG2RAD);
+    double top=RL_CULL_DISTANCE_NEAR*tan(FOV*0.5*DEG2RAD);
     double right=top*aspect;
 
     rlFrustum(-right, right, -top, top, RL_CULL_DISTANCE_NEAR, RL_CULL_DISTANCE_FAR);

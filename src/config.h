@@ -9,4 +9,7 @@ static const int FPS=60;
 //mouse
 static const float MOUSE_SENS=0.0017f;
 
+//other
+static const float FOV=70.f;
+
 #endif
