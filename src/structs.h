@@ -9,7 +9,9 @@ static struct{
 } TextureHolder;
 
 typedef struct{
+    //movement
     Vector3 position;
+    float speed_y;
 
     //cam
     Vector3 target;

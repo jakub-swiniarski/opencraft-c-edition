@@ -28,6 +28,7 @@ int main(void)
 
     Player player={
         .position=(Vector3){.x=(int)(WORLD_WIDTH/2),.y=WORLD_HEIGHT,.z=(int)(WORLD_LENGTH/2)},
+        .speed_y=0.f,
         .target=(Vector3){.x=0.0f,.y=0.0f,.z=0.0f},
         .up=(Vector3){.x=0.0f,.y=1.0f,.z=0.0f},
     };
@@ -56,7 +57,12 @@ int main(void)
 
         //gravity
         if(world[(int)player.position.x][(int)(player.position.y-2)][(int)player.position.z]==AIR)
-            player.position.y-=30*dt; //use speed_y
+            player.speed_y-=0.2*dt; //use speed_y
+        else
+            player.speed_y=0.f;
+        
+        //update player pos
+        player.position.y+=player.speed_y;
 
         BeginDrawing();
 
