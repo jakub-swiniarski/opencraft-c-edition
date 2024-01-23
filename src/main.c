@@ -27,14 +27,10 @@ int main(void)
     }
 
     Player player={
-        .speed_y=0.f,
-        .cam={
-            .position=(Vector3){.x=(int)(WORLD_WIDTH/2),.y=WORLD_HEIGHT,.z=(int)(WORLD_LENGTH/2)},
-            .target=(Vector3){.x=0.0f,.y=0.0f,.z=0.0f},
-            .up=(Vector3){.x=0.0f,.y=1.0f,.z=0.0f},
-            .fovy=70.f,
-            .projection=CAMERA_PERSPECTIVE
-        }
+        .position=(Vector3){.x=(int)(WORLD_WIDTH/2),.y=WORLD_HEIGHT,.z=(int)(WORLD_LENGTH/2)},
+        .target=(Vector3){.x=0.0f,.y=0.0f,.z=0.0f},
+        .up=(Vector3){.x=0.0f,.y=1.0f,.z=0.0f},
+        .fovy=70.f,
     };
 
     //world generation
@@ -57,20 +53,20 @@ int main(void)
     while (!WindowShouldClose())
     {
         dt=GetFrameTime();
-        update_camera(&player.cam,dt);
+        update_player(&player,dt);
 
         //gravity
-        if(world[(int)player.cam.position.x][(int)(player.cam.position.y-2)][(int)player.cam.position.z]==AIR)
-            player.cam.position.y-=30*dt; //use speed_y
+        if(world[(int)player.position.x][(int)(player.position.y-2)][(int)player.position.z]==AIR)
+            player.position.y-=30*dt; //use speed_y
 
         BeginDrawing();
 
             ClearBackground((Color){.r=120,.g=255,.b=255,.a=255});
 
-            BeginMode3D(player.cam);
-                for(int i=player.cam.position.x-RENDER_DIST; i<player.cam.position.x+RENDER_DIST; i++){
+            begin_3d(&player);
+                for(int i=player.position.x-RENDER_DIST; i<player.position.x+RENDER_DIST; i++){
                     for(int j=0; j<WORLD_HEIGHT; j++){
-                        for(int k=player.cam.position.z-RENDER_DIST; k<player.cam.position.z+RENDER_DIST; k++){
+                        for(int k=player.position.z-RENDER_DIST; k<player.position.z+RENDER_DIST; k++){
                             if(world[i][j][k]!=AIR){
                                 int sides[6];
                                 sides[0]=(k==WORLD_LENGTH-1 || world[i][j][k+1]==AIR)?1:0;
