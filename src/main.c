@@ -7,7 +7,6 @@
 
 int main(void)
 {
-    //TODO: assign 0 or 1 (visible) to every block when generating, then update when u break blocks
     InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "OpenCraft");
     
     int display=GetCurrentMonitor();
