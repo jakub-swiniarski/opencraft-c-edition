@@ -1,12 +1,10 @@
 #ifndef GLOBALS_H
 #define GLOBALS_H
 
+#include "config.h"
+
 //world
-#define WORLD_WIDTH 500
-#define WORLD_HEIGHT 50
-#define WORLD_LENGTH 500
 static int world[WORLD_WIDTH][WORLD_HEIGHT][WORLD_LENGTH]; //uint8_t? save ram
-static const int RENDER_DIST=10;
 #define NUM_BLOCKS 3
 enum {AIR,STONE,DIRT,GRASS};
 
