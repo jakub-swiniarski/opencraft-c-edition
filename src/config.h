@@ -16,6 +16,7 @@ static const KeyboardKey MOVE_FORWARD=KEY_W;
 static const KeyboardKey MOVE_BACKWARD=KEY_S;
 static const KeyboardKey MOVE_LEFT=KEY_A;
 static const KeyboardKey MOVE_RIGHT=KEY_D;
+static const KeyboardKey JUMP=KEY_SPACE;
 
 //other
 static const float FOV=70.f;

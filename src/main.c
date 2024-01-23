@@ -53,16 +53,17 @@ int main(void)
     while (!WindowShouldClose())
     {
         dt=GetFrameTime();
-        update_player(&player,dt);
 
         //gravity
         if(world[(int)player.position.x][(int)(player.position.y-2)][(int)player.position.z]==AIR)
-            player.speed_y-=0.2*dt; //use speed_y
+            player.speed_y-=20*dt;
         else
             player.speed_y=0.f;
-        
+
+        update_player(&player,dt);
+
         //update player pos
-        player.position.y+=player.speed_y;
+        player.position.y+=player.speed_y*dt;
 
         BeginDrawing();
 
