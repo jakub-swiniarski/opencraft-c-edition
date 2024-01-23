@@ -143,10 +143,10 @@ void update_player(Player *p, float dt){
     player_yaw(p, -mousePositionDelta.x*MOUSE_SENS);
     player_pitch(p, -mousePositionDelta.y*MOUSE_SENS);
 
-    if (IsKeyDown(KEY_W)) player_move_forward(p, MOVE_SPEED*dt);
-    if (IsKeyDown(KEY_A)) player_move_right(p, -MOVE_SPEED*dt);
-    if (IsKeyDown(KEY_S)) player_move_forward(p, -MOVE_SPEED*dt);
-    if (IsKeyDown(KEY_D)) player_move_right(p, MOVE_SPEED*dt);
+    if (IsKeyDown(MOVE_FORWARD)) player_move_forward(p, MOVE_SPEED*dt);
+    if (IsKeyDown(MOVE_LEFT)) player_move_right(p, -MOVE_SPEED*dt);
+    if (IsKeyDown(MOVE_BACKWARD)) player_move_forward(p, -MOVE_SPEED*dt);
+    if (IsKeyDown(MOVE_RIGHT)) player_move_right(p, MOVE_SPEED*dt);
 }
 
 void begin_3d(Player *p)
