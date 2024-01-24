@@ -34,7 +34,7 @@ int main(void)
         .up=(Vector3){.x=0.0f,.y=1.0f,.z=0.0f},
     };
 
-    //world generation
+    //world generation - TODO: move this to generate_world function
     srand(time(NULL));
     for(int i=0; i<WORLD_WIDTH; i++){
         for(int j=0; j<WORLD_HEIGHT; j++){
