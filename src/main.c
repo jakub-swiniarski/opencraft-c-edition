@@ -1,5 +1,7 @@
 #include <raylib.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 #include "functions.h"
 #include "globals.h"
 #include "config.h"
@@ -33,6 +35,7 @@ int main(void)
     };
 
     //world generation
+    srand(time(NULL));
     for(int i=0; i<WORLD_WIDTH; i++){
         for(int j=0; j<WORLD_HEIGHT; j++){
             for(int k=0; k<WORLD_LENGTH; k++){
@@ -47,7 +50,15 @@ int main(void)
             }
         }
     }
-
+    //generate trees
+    for(int i=0; i<WORLD_WIDTH; i++){
+        for(int k=0; k<WORLD_LENGTH; k++){
+            int random=rand()%100;
+            if(random==1){
+                world[i][WORLD_HEIGHT/2+1][k]=WOOD;
+            }
+        }
+    }
 
     while (!WindowShouldClose())
     {
