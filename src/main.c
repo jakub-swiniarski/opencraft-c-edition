@@ -97,7 +97,7 @@ int main(void)
                                 sides[0]=(k==WORLD_LENGTH-1 || world[i][j][k+1]==AIR)?1:0;
                                 sides[1]=(k==0 || world[i][j][k-1]==AIR)?1:0;
                                 sides[2]=(j==WORLD_HEIGHT-1 || world[i][j+1][k]==AIR)?1:0;
-                                sides[3]=(j==0 || world[i][j-1][k+1]==AIR)?1:0;
+                                sides[3]=(j==0 || world[i][j-1][k]==AIR)?1:0;
                                 sides[4]=(i==WORLD_WIDTH-1 || world[i+1][j][k]==AIR)?1:0;
                                 sides[5]=(i==0 || world[i-1][j][k]==AIR)?1:0;
                                 draw_block(&TextureHolder.blocks[world[i][j][k]-1],i,j,k,sides);
