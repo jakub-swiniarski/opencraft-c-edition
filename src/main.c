@@ -51,11 +51,20 @@ int main(void)
         }
     }
     //generate trees
-    for(int i=0; i<WORLD_WIDTH; i++){
-        for(int k=0; k<WORLD_LENGTH; k++){
+    for(int i=10; i<WORLD_WIDTH-10; i++){
+        for(int k=10; k<WORLD_LENGTH-10; k++){
             int random=rand()%100;
             if(random==1){
-                world[i][WORLD_HEIGHT/2+1][k]=WOOD;
+                for(int a=0; a<5; a++){
+                    for(int b=0; b<5; b++){
+                        for(int c=0; c<3; c++){
+                            world[i-2+a][WORLD_HEIGHT/2+3+c][k-2+b]=LEAVES;
+                        }
+                    }
+                }
+                world[i-2][WORLD_HEIGHT/2+5][k-2]=world[i-2][WORLD_HEIGHT/2+5][k+2]=world[i+2][WORLD_HEIGHT/2+5][k-2]=world[i+2][WORLD_HEIGHT/2+5][k+2]=AIR;
+                for(int a=1; a<5; a++)
+                    world[i][WORLD_HEIGHT/2+a][k]=WOOD;
             }
         }
     }
