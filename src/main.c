@@ -58,12 +58,12 @@ int main(void)
                 for(int a=0; a<5; a++){
                     for(int b=0; b<5; b++){
                         for(int c=0; c<3; c++){
-                            world[i-2+a][WORLD_HEIGHT/2+3+c][k-2+b]=LEAVES;
+                            world[i-2+a][WORLD_HEIGHT/2+4+c][k-2+b]=LEAVES;
                         }
                     }
                 }
-                world[i-2][WORLD_HEIGHT/2+5][k-2]=world[i-2][WORLD_HEIGHT/2+5][k+2]=world[i+2][WORLD_HEIGHT/2+5][k-2]=world[i+2][WORLD_HEIGHT/2+5][k+2]=AIR;
-                for(int a=1; a<5; a++)
+                world[i-2][WORLD_HEIGHT/2+6][k-2]=world[i-2][WORLD_HEIGHT/2+6][k+2]=world[i+2][WORLD_HEIGHT/2+6][k-2]=world[i+2][WORLD_HEIGHT/2+6][k+2]=AIR;
+                for(int a=1; a<6; a++)
                     world[i][WORLD_HEIGHT/2+a][k]=WOOD;
             }
         }
