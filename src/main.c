@@ -102,10 +102,7 @@ int main(void)
                                 sides[4]=(i==WORLD_WIDTH-1 || world[i+1][j][k]==AIR)?1:0;
                                 sides[5]=(i==0 || world[i-1][j][k]==AIR)?1:0;
     
-                                if(player.position.x<i)
-                                    sides[4]=0;
-                                else
-                                    sides[5]=0;
+                                //TODO: smth must be wrong - this doesn't give a huge fps boost
                                 if(player.position.z<k)
                                     sides[0]=0;
                                 else
@@ -114,6 +111,10 @@ int main(void)
                                     sides[2]=0;
                                 else
                                     sides[3]=0;
+                                if(player.position.x<i)
+                                    sides[4]=0;
+                                else
+                                    sides[5]=0;
 
                                 draw_block(&TextureHolder.blocks[world[i][j][k]-1],i,j,k,sides);
                             }
