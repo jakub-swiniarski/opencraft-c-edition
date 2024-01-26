@@ -148,7 +148,7 @@ void update_player(Player *p, float dt){
     if (IsKeyDown(MOVE_BACKWARD)) player_move_forward(p, -MOVE_SPEED*dt);
     if (IsKeyDown(MOVE_RIGHT)) player_move_right(p, MOVE_SPEED*dt);
 
-    if(IsKeyDown(JUMP) && p->speed_y==0.f) p->speed_y=10;
+    if(IsKeyDown(JUMP) && p->speed_y==0.f) p->speed_y=JUMP_SPEED;
 }
 
 void begin_3d(Player *p)
