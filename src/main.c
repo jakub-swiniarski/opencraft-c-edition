@@ -74,6 +74,7 @@ int main(void)
         dt=GetFrameTime();
 
         //gravity
+        //TODO: define player height, width, length and use them for collision calculations and gravity
         if(world[(int)player.position.x][(int)(player.position.y-2)][(int)player.position.z]==AIR)
             player.speed_y-=20*dt;
         else
