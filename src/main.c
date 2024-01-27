@@ -90,9 +90,9 @@ int main(void)
             ClearBackground((Color){.r=120,.g=255,.b=255,.a=255});
 
             begin_3d(&player);
-                for(int i=player.position.x-RENDER_DIST; i<player.position.x+RENDER_DIST; i++){
+                for(int i=player.position.x-RENDER_DIST; i<=player.position.x+RENDER_DIST; i++){
                     for(int j=0; j<WORLD_HEIGHT; j++){
-                        for(int k=player.position.z-RENDER_DIST; k<player.position.z+RENDER_DIST; k++){
+                        for(int k=player.position.z-RENDER_DIST; k<=player.position.z+RENDER_DIST; k++){
                             if(world[i][j][k]==AIR) continue;
 
                             //TODO: if block not visible, continue
