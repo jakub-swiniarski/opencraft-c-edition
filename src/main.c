@@ -103,7 +103,6 @@ int main(void)
                             sides[4]=(i==WORLD_WIDTH-1 || world[i+1][j][k]==AIR)?1:0;
                             sides[5]=(i==0 || world[i-1][j][k]==AIR)?1:0;
 
-                            //TODO: smth must be wrong - this doesn't give a huge fps boost
                             if(player.position.z<k)
                                 sides[0]=0;
                             else
