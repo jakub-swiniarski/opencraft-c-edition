@@ -95,6 +95,8 @@ int main(void)
                         for(int k=player.position.z-RENDER_DIST; k<player.position.z+RENDER_DIST; k++){
                             if(world[i][j][k]==AIR) continue;
 
+                            //TODO: if block not visible, continue
+
                             int sides[6];
 
                             sides[0]=(player.position.z>k && (k==WORLD_LENGTH-1 || world[i][j][k+1]==AIR))?1:0;
