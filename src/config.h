@@ -7,7 +7,7 @@
 #define WORLD_WIDTH 500
 #define WORLD_HEIGHT 50
 #define WORLD_LENGTH 500
-static const int RENDER_DIST=10;
+static const int RENDER_DIST=100;
 
 //display
 static const int SCREEN_WIDTH=1920;
