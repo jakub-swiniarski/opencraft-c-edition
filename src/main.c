@@ -94,6 +94,7 @@ int main(void)
                     for(int j=0; j<WORLD_HEIGHT; j++){
                         for(int k=player.position.z-RENDER_DIST; k<player.position.z+RENDER_DIST; k++){
                             if(world[i][j][k]==AIR) continue;
+
                             int sides[6];
 
                             sides[0]=(player.position.z>k && (k==WORLD_LENGTH-1 || world[i][j][k+1]==AIR))?1:0;
@@ -115,9 +116,8 @@ int main(void)
         EndDrawing();
     }
     
-    for(int i=0; i<NUM_BLOCKS; i++){
+    for(int i=0; i<NUM_BLOCKS; i++)
         UnloadTexture(TextureHolder.blocks[i]);
-    }
 
     CloseWindow();
 
