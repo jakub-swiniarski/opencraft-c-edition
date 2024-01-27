@@ -96,6 +96,12 @@ int main(void)
                             if(world[i][j][k]==AIR) continue;
 
                             //TODO: if block not visible, continue
+                            if(!((player.position.x<player.target.x && i>player.position.x) ||
+                                (player.position.x>player.target.x && i<player.position.x)) &&
+                            //!((player.position.y<player.target.y && j>player.position.y) ||
+                            //    (player.position.y>player.target.y && j<player.position.y)) &&
+                            !((player.position.z<player.target.z && k>player.position.z) ||
+                                (player.position.z>player.target.z && k<player.position.z))) continue;
 
                             int sides[6];
 
