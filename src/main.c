@@ -84,6 +84,10 @@ int main(void)
 
         //update player pos
         player.position.y+=player.speed_y*dt;
+    
+        //mouse input
+        if(IsMouseButtonPressed(ATTACK)) //TODO: FIX
+            world[(int)player.target.x][(int)player.target.y][(int)player.target.z]=AIR;
 
         BeginDrawing();
 
@@ -96,7 +100,7 @@ int main(void)
                             if(world[i][j][k]==AIR) continue;
 
                             //TODO: if block not visible, continue
-                            if(!((player.position.x<player.target.x && i+50>player.position.x) ||
+                            if(!((player.position.x<player.target.x && i+50>player.position.x) || //do not add constant values, add more the further we are from the player (delta i)
                                 (player.position.x>player.target.x && i-50<player.position.x)) ||
                             //!((player.position.y<player.target.y && j>player.position.y) ||
                             //    (player.position.y>player.target.y && j<player.position.y)) &&

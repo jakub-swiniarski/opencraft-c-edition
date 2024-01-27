@@ -16,6 +16,7 @@ static const int FPS=60;
 
 //mouse
 static const float MOUSE_SENS=0.0017f;
+static const MouseButton ATTACK=MOUSE_BUTTON_LEFT;
 
 //keyboard
 static const KeyboardKey MOVE_FORWARD=KEY_W;
