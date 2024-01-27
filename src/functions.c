@@ -16,8 +16,7 @@ char *path_to_file(char *name){
     return path;
 }
 
-void draw_block(Texture *tx, int x, int y, int z, int *sides)
-{
+void draw_block(Texture *tx, int x, int y, int z, int *sides){
     rlSetTexture(tx->id);
 
     rlBegin(RL_QUADS);
@@ -83,24 +82,21 @@ void draw_block(Texture *tx, int x, int y, int z, int *sides)
 
 //------------------------------------------------------------------
 
-Vector3 get_player_right(Player *p)
-{
+Vector3 get_player_right(Player *p){
     Vector3 forward=Vector3Normalize(Vector3Subtract(p->target, p->position));
     Vector3 up=Vector3Normalize(p->up);
 
     return Vector3CrossProduct(forward, up);
 }
 
-void player_yaw(Player *p, float angle)
-{
+void player_yaw(Player *p, float angle){
     Vector3 up=Vector3Normalize(p->up);
     Vector3 target_position=Vector3Subtract(p->target, p->position);
     target_position=Vector3RotateByAxisAngle(target_position, up, angle);
     p->target=Vector3Add(p->position, target_position);
 }
 
-void player_pitch(Player *p, float angle)
-{
+void player_pitch(Player *p, float angle){
     Vector3 up=Vector3Normalize(p->up); 
     Vector3 target_position=Vector3Subtract(p->target, p->position);
     float max_angle_up=Vector3Angle(up, target_position);
@@ -115,8 +111,7 @@ void player_pitch(Player *p, float angle)
     p->target = Vector3Add(p->position, target_position);
 }
 
-void player_move_forward(Player *p, float distance)
-{
+void player_move_forward(Player *p, float distance){
     Vector3 forward=Vector3Normalize(Vector3Subtract(p->target, p->position));
     forward.y=0;
     forward=Vector3Normalize(forward);
@@ -125,8 +120,7 @@ void player_move_forward(Player *p, float distance)
     p->target=Vector3Add(p->target, forward);
 }
 
-void player_move_right(Player *p, float distance)
-{
+void player_move_right(Player *p, float distance){
     Vector3 right=get_player_right(p);
     right.y=0;
     right=Vector3Normalize(right);
@@ -151,8 +145,7 @@ void update_player(Player *p, float dt){
     if(IsKeyDown(JUMP) && p->speed_y==0.f) p->speed_y=JUMP_SPEED;
 }
 
-void begin_3d(Player *p)
-{
+void begin_3d(Player *p){
     rlDrawRenderBatchActive();
 
     rlMatrixMode(RL_PROJECTION);

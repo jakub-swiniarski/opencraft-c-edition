@@ -7,8 +7,7 @@
 #include "config.h"
 #include "structs.h"
 
-int main(void)
-{
+int main(void){
     InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "OpenCraft");
     
     int display=GetCurrentMonitor();
