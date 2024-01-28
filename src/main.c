@@ -87,6 +87,8 @@ int main(void){
         //mouse input
         if(IsMouseButtonPressed(ATTACK)) //TODO: FIX
             world[(int)player.target.x][(int)player.target.y][(int)player.target.z]=AIR;
+        if(IsMouseButtonPressed(PLACE))
+            world[(int)player.target.x][(int)player.target.y][(int)player.target.z]=STONE;
 
         BeginDrawing();
 
