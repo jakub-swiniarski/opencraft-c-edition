@@ -16,7 +16,7 @@ char *path_to_file(char *name){
     return path;
 }
 
-void draw_block(Texture *tx, int x, int y, int z, int *sides){
+void draw_block(Texture *tx, int x, int y, int z, bool *sides){
     rlSetTexture(tx->id);
 
     rlBegin(RL_QUADS);

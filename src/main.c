@@ -108,7 +108,7 @@ int main(void){
                             !((player.position.z<player.target.z && k+50>player.position.z) ||
                                 (player.position.z>player.target.z && k-50<player.position.z))) continue;
 
-                            int sides[6];
+                            bool sides[6];
 
                             sides[0]=(player.position.z>k && (k==WORLD_LENGTH-1 || world[i][j][k+1]==AIR))?1:0;
                             sides[1]=(player.position.z<k && (k==0 || world[i][j][k-1]==AIR))?1:0;
