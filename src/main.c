@@ -85,7 +85,7 @@ int main(void){
         player.position.y+=player.speed_y*dt;
     
         //mouse input
-        if(IsMouseButtonPressed(ATTACK)) //TODO: FIX
+        if(IsMouseButtonPressed(ATTACK)) //TODO: cast a ray from the camera or try using .target.position 
             world[(int)player.position.x][(int)player.position.y-2][(int)player.position.z]=AIR;
         if(IsMouseButtonPressed(PLACE)) //TODO: check if world[x][y][z]==AIR
             world[(int)player.position.x][(int)player.position.y-2][(int)player.position.z]=STONE;
