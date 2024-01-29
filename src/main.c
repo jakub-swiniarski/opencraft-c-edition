@@ -31,6 +31,7 @@ int main(void){
         .speed_y=0.f,
         .target=(Vector3){.x=0.0f,.y=0.0f,.z=0.0f},
         .up=(Vector3){.x=0.0f,.y=1.0f,.z=0.0f},
+        .height=1.5f
     };
 
     //world generation - TODO: move this to generate_world function
@@ -73,8 +74,7 @@ int main(void){
         dt=GetFrameTime();
 
         //gravity
-        //TODO: define player height, width, length and use them for collision calculations and gravity
-        if(world[(int)player.position.x][(int)(player.position.y-2)][(int)player.position.z]==AIR)
+        if(world[(int)player.position.x][(int)(player.position.y-player.height)][(int)player.position.z]==AIR)
             player.speed_y-=20*dt;
         else
             player.speed_y=0.f;
@@ -86,9 +86,9 @@ int main(void){
     
         //mouse input
         if(IsMouseButtonPressed(ATTACK)) //TODO: cast a ray from the camera or try using .target.position 
-            world[(int)player.position.x][(int)player.position.y-2][(int)player.position.z]=AIR;
+            world[(int)player.position.x][(int)(player.position.y-player.height)][(int)player.position.z]=AIR;
         if(IsMouseButtonPressed(PLACE)) //TODO: check if world[x][y][z]==AIR
-            world[(int)player.position.x][(int)player.position.y-2][(int)player.position.z]=STONE;
+            world[(int)player.position.x][(int)(player.position.y-player.height)][(int)player.position.z]=STONE;
 
         BeginDrawing();
 

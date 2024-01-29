@@ -16,6 +16,9 @@ typedef struct{
     //cam
     Vector3 target;
     Vector3 up;
+
+    //size
+    float height;
 } Player;
 
 #endif
