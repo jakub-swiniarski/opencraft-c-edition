@@ -4,7 +4,7 @@
 #include "config.h"
 
 //world
-static int world[WORLD_WIDTH][WORLD_HEIGHT][WORLD_LENGTH]; //TODO: uint8_t? save ram
+static int world[WORLD_WIDTH][WORLD_HEIGHT][WORLD_LENGTH]; //TODO: uint8_t? save ram, define this in main?
 #define NUM_BLOCKS 5
 enum {AIR,STONE,DIRT,GRASS,WOOD,LEAVES};
 
