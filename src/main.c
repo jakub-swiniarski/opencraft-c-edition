@@ -73,6 +73,9 @@ int main(void){
     {
         dt=GetFrameTime();
 
+        //TODO: gravity - player falls through blocks, create a safe space around the edges
+        //TODO: blocks are not placed in the right position, they are shifted for some reason, cast a ray from camera and find an intersection with a block 
+
         //gravity
         if(world[(int)player.position.x][(int)(player.position.y-player.height)][(int)player.position.z]==AIR)
             player.speed_y-=20*dt;
