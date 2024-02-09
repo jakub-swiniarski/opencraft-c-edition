@@ -103,7 +103,6 @@ int main(void){
                         for(int k=player.position.z-RENDER_DIST; k<=player.position.z+RENDER_DIST; k++){
                             if(world[i][j][k]==AIR) continue;
 
-                            //TODO: if block not visible, continue
                             if(!((player.position.x<player.target.x && i+50>player.position.x) || //do not add constant values, add more the further we are from the player (delta i)
                                 (player.position.x>player.target.x && i-50<player.position.x)) ||
                             //!((player.position.y<player.target.y && j>player.position.y) ||
