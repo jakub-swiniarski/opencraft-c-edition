@@ -1,3 +1,3 @@
 # OpenCraft C Edition
-Just another block game...
+Just another block game... <br>
 The code is a mess.
