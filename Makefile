@@ -1,26 +1,21 @@
-SOURCES=$(wildcard src/*.c)
-HEADERS=$(wildcard src/*.h)
-OBJECTS=$(patsubst src/%.c,%.o,$(SOURCES))
+SRC = $(wildcard src/*.c)
+HDR = $(wildcard src/*.h)
+OBJ = $(patsubst src/%.c, %.o, $(SRC))
 
-opencraft: $(OBJECTS)
-	gcc -o $@ $(OBJECTS) -lraylib -lm
+all: opencraft
 
-$(OBJECTS): $(SOURCES) $(HEADERS)
-	gcc -c $(SOURCES) -O2
+%.o: src/%.c
+	gcc -c -O2 $<
 
-.PHONY: clean run install uninstall
+$(OBJ): $(HDR)
 
-clean:
-	rm *.o opencraft
+opencraft: $(OBJ)
+	gcc -o $@ $(OBJ) -lraylib -lm
 
-run: opencraft
+run: all
 	./opencraft
 
-install: opencraft res
-	mkdir -p /usr/local/share/opencraft/
-	cp opencraft /usr/local/bin/
-	cp res/* /usr/local/share/opencraft/
+clean:
+	rm -f *.o opencraft
 
-uninstall:
-	rm /usr/local/bin/opencraft
-	rm -rf /usr/local/share/opencraft
+.PHONY: all run clean
